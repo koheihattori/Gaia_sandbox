@@ -1,0 +1,21 @@
+SELECT source_id, 
+ra, dec, 
+b, l, 
+parallax, parallax_error, 
+pmra, pmra_error,
+pmdec, pmdec_error,
+pmra_pmdec_corr,
+radial_velocity, radial_velocity_error, 
+rv_template_fe_h,
+teff_val,
+bp_rp, 
+phot_g_mean_mag
+FROM gaiadr2.gaia_source
+WHERE
+(radial_velocity is not NULL)
+AND 
+(parallax is not NULL)
+AND
+(rv_template_fe_h between -0.05 and 0.05)
+AND
+(mod(random_index,100)=0)
